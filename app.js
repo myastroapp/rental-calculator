@@ -9,6 +9,7 @@ const FIELDS = ["price", "downPct", "closingCosts", "rehab", "rate", "years", "m
 const money = (n) => (n < 0 ? "-$" : "$") + Math.abs(Math.round(n)).toLocaleString();
 const pct = (n) => n.toFixed(2) + "%";
 const inputs = () => Object.fromEntries(FIELDS.map((f) => [f, $(f).value]));
+let pendingPrint = false;
 
 function setV(id, val, good) {
   const el = $(id);
@@ -52,10 +53,21 @@ function renderReport(i) {
   }
   let amRows = "";
   for (const r of am.rows) amRows += `<tr><td>${r.year}</td><td>${money(r.principal)}</td><td>${money(r.interest)}</td><td>${money(r.balance)}</td></tr>`;
+  const metric = (k, v) => `<div class="m"><div class="k">${k}</div><div class="v">${v}</div></div>`;
   $("report").innerHTML =
-    `<h4 style="margin:14px 0 4px;font-size:14px">5-year projection <span class="small">(assumes 3% rent/expense growth &amp; 3% appreciation)</span></h4>` +
+    `<div class="rep-head"><h2>Rental Property Deal Analysis</h2>` +
+    `<div class="sub">Purchase ${money(price)} · ${i.downPct || 0}% down · ${i.rate || 0}% / ${i.years || 30}yr · rent ${money(parseFloat(i.monthlyRent) || 0)}/mo</div></div>` +
+    `<div class="rep-metrics">` +
+      metric("Monthly cash flow", money(d.monthlyCashFlow)) +
+      metric("Cash-on-cash", pct(d.cashOnCash)) +
+      metric("Cap rate", pct(d.capRate)) +
+      metric("NOI (annual)", money(d.noi)) +
+      metric("Mortgage P&amp;I/mo", money(d.monthlyPI)) +
+      metric("Cash invested", money(d.totalInvested)) +
+    `</div>` +
+    `<h4>5-year projection <span class="small">(assumes 3% rent/expense growth &amp; 3% appreciation)</span></h4>` +
     `<table><thead><tr><th>Year</th><th>Cash flow</th><th>Equity</th><th>Loan balance</th></tr></thead><tbody>${rows5}</tbody></table>` +
-    `<h4 style="margin:16px 0 4px;font-size:14px">Amortization (yearly)</h4>` +
+    `<h4>Amortization (yearly)</h4>` +
     `<table><thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${amRows}</tbody></table>`;
   $("report").dataset.shown = "1";
 }
@@ -70,9 +82,17 @@ function wire() {
     if (!isPro()) { openUnlock(); return; }
     renderReport(inputs());
   });
+  $("btn-pdf").addEventListener("click", () => {
+    if (!isPro()) { pendingPrint = true; openUnlock(); return; }
+    renderReport(inputs());
+    window.print();
+  });
   $("btn-code").addEventListener("click", () => {
-    if (tryUnlock($("code").value)) { closeUnlock(); renderReport(inputs()); }
-    else { $("code").value = ""; $("code").placeholder = "Invalid code — check your receipt"; }
+    if (tryUnlock($("code").value)) {
+      closeUnlock();
+      renderReport(inputs());
+      if (pendingPrint) { pendingPrint = false; window.print(); }
+    } else { $("code").value = ""; $("code").placeholder = "Invalid code — check your receipt"; }
   });
   $("unlock-close").addEventListener("click", closeUnlock);
   $("unlock").addEventListener("click", (e) => { if (e.target.id === "unlock") closeUnlock(); });

@@ -50,6 +50,20 @@
     .code-row{display:flex;gap:6px;margin-top:8px}.code-row input{flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg)}
     .small{color:var(--muted);font-size:13px}.prose{margin-top:30px}.prose h2{font-size:19px}a{color:var(--accent)}
     footer{border-top:1px solid var(--border);margin-top:36px;padding:20px 0 0;color:var(--muted);font-size:13px}
+    .pro .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+    #report h4{margin:14px 0 4px;font-size:14px}
+    .rep-head,.rep-metrics{display:none}
+    @media print{
+      body *{visibility:hidden}
+      #report,#report *{visibility:visible}
+      #report{position:absolute;left:0;top:0;width:100%;padding:0;color:#111;font-size:12px}
+      .rep-head{display:block;margin-bottom:6px}
+      .rep-head h2{margin:0 0 2px;font-size:20px}.rep-head .sub{color:#555;font-size:12px}
+      .rep-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+      .rep-metrics .m{border:1px solid #ccc;border-radius:8px;padding:8px 10px;break-inside:avoid}
+      .rep-metrics .m .k{font-size:10px;color:#666}.rep-metrics .m .v{font-size:16px;font-weight:700}
+      #report table{font-size:11px}#report th,#report td{border-color:#ddd}
+    }
   </style>
 </head>
 <body>
@@ -95,9 +109,12 @@
         </div>
 
         <div class="pro">
-          <h3>Full report ✦</h3>
-          <p class="small">Year-by-year amortization &amp; a 5-year cash-flow / equity projection — the detail you need before making an offer.</p>
-          <button id="btn-report">Show full report</button>
+          <h3>Full deal report ✦</h3>
+          <p class="small">Year-by-year amortization plus a 5-year cash-flow &amp; equity projection — download a clean PDF deal sheet to save or bring to a lender or partner.</p>
+          <div class="btns">
+            <button id="btn-report">Show full report</button>
+            <button id="btn-pdf" class="primary">⤓ Download PDF report</button>
+          </div>
           <div id="report"></div>
         </div>
       </div>
@@ -111,7 +128,7 @@
 
     <section class="prose">
       <h2>FAQ</h2>
-      <p><strong>Is it free?</strong> Yes — the calculator is free. An optional one-time $19 Pro adds the full year-by-year amortization and a 5-year cash-flow &amp; equity projection.</p>
+      <p><strong>Is it free?</strong> Yes — the calculator and all metrics are free. An optional one-time $19 Pro lets you download an unlimited professional PDF deal report (all metrics, a 5-year projection, and year-by-year amortization) to save or share.</p>
       <p><strong>Is my data saved or uploaded?</strong> No. Everything runs in your browser; the numbers you enter are never stored or sent anywhere.</p>
       <p><strong>What counts as a good return?</strong> Many investors target a cap rate around 5–8% and cash-on-cash around 8–12%, but it varies by market — see the <a href="cap-rate.html">cap rate</a> and <a href="cash-on-cash-return.html">cash-on-cash</a> guides.</p>
       <p><strong>How is cash flow calculated?</strong> Net operating income (rent after vacancy, minus operating expenses) minus your mortgage payment.</p>
@@ -123,8 +140,8 @@
   <div id="unlock" class="modal" hidden>
     <div class="modal-card">
       <button id="unlock-close" class="modal-x" aria-label="Close">×</button>
-      <h2>Unlock the full report</h2>
-      <p>Year-by-year amortization plus a 5-year cash-flow and equity projection you can use and share. One-time <strong>$19</strong>, lifetime.</p>
+      <h2>Unlock the full deal report</h2>
+      <p>Download a professional PDF deal analysis — all metrics, a 5-year cash-flow &amp; equity projection, and year-by-year amortization — to save or bring to your lender or partner. Unlimited reports, one-time <strong>$19</strong>, lifetime.</p>
       <a class="cta" id="buy" href="#" target="_blank" rel="noopener">Unlock for $19 →</a>
       <p class="small">Already purchased? Enter your code:</p>
       <div class="code-row"><input id="code" placeholder="RC-PRO-…" autocomplete="off" /><button id="btn-code">Unlock</button></div>
@@ -132,6 +149,6 @@
   </div>
 
   <script type="module" src="app.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes — the calculator is free. An optional one-time $19 Pro adds the full year-by-year amortization and a 5-year cash-flow and equity projection."}},{"@type":"Question","name":"Is my data saved or uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser; the numbers you enter are never stored or sent anywhere."}},{"@type":"Question","name":"What counts as a good return?","acceptedAnswer":{"@type":"Answer","text":"Many investors target a cap rate around 5 to 8 percent and cash-on-cash around 8 to 12 percent, but it varies by market."}},{"@type":"Question","name":"How is cash flow calculated?","acceptedAnswer":{"@type":"Answer","text":"Net operating income (rent after vacancy, minus operating expenses) minus your mortgage payment."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes — the calculator and all metrics are free. An optional one-time $19 Pro lets you download an unlimited professional PDF deal report with all metrics, a 5-year projection, and year-by-year amortization."}},{"@type":"Question","name":"Is my data saved or uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser; the numbers you enter are never stored or sent anywhere."}},{"@type":"Question","name":"What counts as a good return?","acceptedAnswer":{"@type":"Answer","text":"Many investors target a cap rate around 5 to 8 percent and cash-on-cash around 8 to 12 percent, but it varies by market."}},{"@type":"Question","name":"How is cash flow calculated?","acceptedAnswer":{"@type":"Answer","text":"Net operating income (rent after vacancy, minus operating expenses) minus your mortgage payment."}}]}</script>
 </body>
 </html>
