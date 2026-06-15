@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mortgage Calculator — Monthly Payment &amp; Amortization (Free)</title>
+  <meta name="description" content="Free mortgage calculator: estimate your monthly payment, total interest, and a full year-by-year amortization schedule. Runs in your browser." />
+  <link rel="canonical" href="https://myastroapp.github.io/rental-calculator/mortgage.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mortgage Calculator — Payment & Amortization" />
+  <meta property="og:description" content="Monthly payment, total interest, and full amortization schedule. Free, in your browser." />
+  <meta property="og:url" content="https://myastroapp.github.io/rental-calculator/mortgage.html" />
+  <meta property="og:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="theme-color" content="#0d7d4d" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    :root{--fg:#1f2328;--muted:#656d76;--bg:#fff;--accent:#0d7d4d;--border:#d0d7de;--soft:#f6f8fa}
+    @media(prefers-color-scheme:dark){:root{--fg:#e6edf3;--muted:#8b949e;--bg:#0d1117;--accent:#3fb950;--border:#30363d;--soft:#161b22}}
+    *{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--fg);background:var(--bg)}
+    .wrap{max-width:780px;margin:0 auto;padding:0 18px 60px}header{padding:16px 0}.logo{color:var(--accent);text-decoration:none;font-weight:700}
+    h1{font-size:28px;margin:14px 0 4px}.sub{color:var(--muted);margin:0 0 18px}
+    .form{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:460px}
+    .field{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .field label{font-size:13px}.field input{width:120px;font:inherit;font-size:13px;text-align:right;padding:5px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg)}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0;max-width:460px}
+    .card{background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:12px 14px}.card .k{font-size:12px;color:var(--muted)}.card .v{font-size:22px;font-weight:700;margin-top:2px}
+    table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}th,td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--border)}th:first-child,td:first-child{text-align:left}
+    .prose{margin-top:26px}.prose h2{font-size:19px}a{color:var(--accent)}
+    footer{border-top:1px solid var(--border);margin-top:30px;padding-top:18px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="logo" href="./">Rental Property Calculator</a></header>
+    <h1>Mortgage Calculator</h1>
+    <p class="sub">Estimate your monthly payment, total interest, and the full amortization schedule. Updates as you type; everything stays in your browser.</p>
+    <div class="form">
+      <div class="field"><label>Home price ($)</label><input id="price" type="number" value="400000" /></div>
+      <div class="field"><label>Down payment (%)</label><input id="downPct" type="number" value="20" /></div>
+      <div class="field"><label>Interest rate (%/yr)</label><input id="rate" type="number" step="0.01" value="6.5" /></div>
+      <div class="field"><label>Term (years)</label><input id="years" type="number" value="30" /></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="k">Monthly payment (P&amp;I)</div><div class="v" id="o-pay">—</div></div>
+      <div class="card"><div class="k">Loan amount</div><div class="v" id="o-loan">—</div></div>
+      <div class="card"><div class="k">Total interest</div><div class="v" id="o-int">—</div></div>
+      <div class="card"><div class="k">Total paid</div><div class="v" id="o-total">—</div></div>
+    </div>
+    <h2 style="font-size:17px;margin:18px 0 4px">Amortization schedule</h2>
+    <div id="sched"></div>
+
+    <section class="prose">
+      <h2>How it's calculated</h2>
+      <p>The monthly principal &amp; interest uses the standard amortization formula on your loan amount (price minus down payment), interest rate, and term. It excludes property tax, insurance, and HOA — add those separately for a full housing payment. Buying a rental instead of a home? Use the <a href="./">rental property calculator</a> to see cash flow and returns.</p>
+    </section>
+    <footer>Estimates only — verify with your lender. <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="./">Rental calculator</a></footer>
+  </div>
+  <script type="module" src="mortgage.js"></script>
+</body>
+</html>
