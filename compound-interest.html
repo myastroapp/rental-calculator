@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compound Interest Calculator — Savings &amp; Investment Growth (Free)</title>
+  <meta name="description" content="Free compound interest calculator: see how savings grow with monthly contributions and compounding. Shows final balance, total contributions, and interest earned." />
+  <link rel="canonical" href="https://myastroapp.github.io/rental-calculator/compound-interest.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Compound Interest Calculator" />
+  <meta property="og:description" content="See how savings grow with compounding and monthly contributions. Free, in your browser." />
+  <meta property="og:url" content="https://myastroapp.github.io/rental-calculator/compound-interest.html" />
+  <meta property="og:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="theme-color" content="#0d7d4d" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    :root{--fg:#1f2328;--muted:#656d76;--bg:#fff;--accent:#0d7d4d;--border:#d0d7de;--soft:#f6f8fa}
+    @media(prefers-color-scheme:dark){:root{--fg:#e6edf3;--muted:#8b949e;--bg:#0d1117;--accent:#3fb950;--border:#30363d;--soft:#161b22}}
+    *{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--fg);background:var(--bg)}
+    .wrap{max-width:720px;margin:0 auto;padding:0 18px 60px}header{padding:16px 0}.logo{color:var(--accent);text-decoration:none;font-weight:700}
+    h1{font-size:28px;margin:14px 0 4px}.sub{color:var(--muted);margin:0 0 18px}
+    .form{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:460px}
+    .field{display:flex;justify-content:space-between;align-items:center;gap:8px}.field label{font-size:13px}
+    .field input{width:120px;font:inherit;font-size:13px;text-align:right;padding:5px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0;max-width:560px}
+    @media(max-width:560px){.cards{grid-template-columns:1fr}}
+    .card{background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:12px 14px}.card .k{font-size:12px;color:var(--muted)}.card .v{font-size:21px;font-weight:700;margin-top:2px}
+    .prose{margin-top:26px}.prose h2{font-size:19px}a{color:var(--accent)}
+    footer{border-top:1px solid var(--border);margin-top:30px;padding-top:18px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="logo" href="./">Finance Calculators</a></header>
+    <h1>Compound Interest Calculator</h1>
+    <p class="sub">See how an investment or savings balance grows over time with compounding and regular monthly contributions. Updates as you type.</p>
+    <div class="form">
+      <div class="field"><label>Starting amount ($)</label><input id="principal" type="number" value="10000" /></div>
+      <div class="field"><label>Monthly contribution ($)</label><input id="monthly" type="number" value="500" /></div>
+      <div class="field"><label>Annual return (%)</label><input id="rate" type="number" step="0.1" value="7" /></div>
+      <div class="field"><label>Years</label><input id="years" type="number" value="10" /></div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="k">Final balance</div><div class="v" id="o-fv">—</div></div>
+      <div class="card"><div class="k">Total contributed</div><div class="v" id="o-contrib">—</div></div>
+      <div class="card"><div class="k">Interest earned</div><div class="v" id="o-int">—</div></div>
+    </div>
+    <section class="prose">
+      <h2>How it works</h2>
+      <p>Compounding means you earn returns on your returns, not just your contributions. This assumes monthly compounding and that contributions are added each month. Over long horizons the interest-earned figure often dwarfs what you put in — that's the point of starting early. Estimates only; actual returns vary.</p>
+    </section>
+    <footer>Runs entirely in your browser. <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="mortgage.html">Mortgage calculator</a> &nbsp;·&nbsp; <a href="./">Rental calculator</a></footer>
+  </div>
+  <script type="module" src="compound.js"></script>
+</body>
+</html>
