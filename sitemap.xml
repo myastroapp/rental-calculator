@@ -2,5 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://myastroapp.github.io/rental-calculator/</loc><lastmod>2026-06-15</lastmod><priority>1.0</priority></url>
   <url><loc>https://myastroapp.github.io/rental-calculator/cash-on-cash-return.html</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://myastroapp.github.io/rental-calculator/cap-rate.html</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
   <url><loc>https://myastroapp.github.io/rental-calculator/privacy.html</loc><lastmod>2026-06-15</lastmod><priority>0.3</priority></url>
 </urlset>
