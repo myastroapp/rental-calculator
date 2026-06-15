@@ -1,5 +1,5 @@
 // Compound interest with optional monthly contributions (monthly compounding).
-const $ = (id) => document.getElementById(id);
+const $ = (id) => (typeof document !== "undefined" ? document.getElementById(id) : null);
 const money = (n) => "$" + Math.round(n).toLocaleString();
 const FIELDS = ["principal", "monthly", "rate", "years"];
 

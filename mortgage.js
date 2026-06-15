@@ -1,6 +1,6 @@
 import { amortization } from "./finance.js";
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => (typeof document !== "undefined" ? document.getElementById(id) : null);
 const money = (n) => "$" + Math.round(n).toLocaleString();
 const FIELDS = ["price", "downPct", "rate", "years"];
 
