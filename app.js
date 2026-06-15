@@ -77,6 +77,10 @@ const closeUnlock = () => ($("unlock").hidden = true);
 
 function wire() {
   for (const f of FIELDS) $(f).addEventListener("input", recompute);
+  for (const fl of document.querySelectorAll(".field")) {
+    const lab = fl.querySelector("label"), inp = fl.querySelector("input[id]");
+    if (lab && inp) lab.htmlFor = inp.id;
+  }
   $("buy").href = BUY_URL;
   $("btn-report").addEventListener("click", () => {
     if (!isPro()) { openUnlock(); return; }
