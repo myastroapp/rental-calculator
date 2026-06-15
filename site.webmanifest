@@ -1,0 +1,21 @@
+{
+  "name": "Rental Property Calculator",
+  "short_name": "Rental Calc",
+  "description": "Estimate rental cash flow, cap rate, and cash-on-cash return — free, in-browser.",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#0d7d4d",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
