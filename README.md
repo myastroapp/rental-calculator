@@ -16,3 +16,8 @@ A free, private calculator for analyzing a rental or BRRRR deal: monthly cash fl
 Everything runs locally in your browser. No accounts, no tracking, nothing uploaded. The figures you enter never leave your device.
 
 Estimates only — verify with your lender and a local agent before making an offer.
+
+## More free tools
+- [JSON & developer tools](https://myastroapp.github.io/json-viewer/) — viewer, formatter, converters, JWT, Base64, regex, and more
+- [Invoice / estimate / receipt generator](https://myastroapp.github.io/invoice-generator/) — free, no sign-up
+- [Resume builder + cover letter + ATS checker](https://myastroapp.github.io/resume-builder/) — free, private
