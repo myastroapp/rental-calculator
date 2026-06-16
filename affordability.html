@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Affordability Calculator — How Much House Can I Afford?</title>
+  <meta name="description" content="Find out how much house you can afford with the 28/36 rule. Enter your income, debts, and down payment to see your max home price, loan, and monthly payment. Free, in your browser." />
+  <link rel="canonical" href="https://myastroapp.github.io/rental-calculator/affordability.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Home Affordability Calculator" />
+  <meta property="og:description" content="How much house can you afford? Uses the 28/36 rule — free, private, in your browser." />
+  <meta property="og:url" content="https://myastroapp.github.io/rental-calculator/affordability.html" />
+  <meta property="og:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="theme-color" content="#0d7d4d" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    :root{--fg:#1f2328;--muted:#656d76;--bg:#fff;--accent:#0d7d4d;--border:#d0d7de;--soft:#f6f8fa}
+    @media (prefers-color-scheme:dark){:root{--fg:#e6edf3;--muted:#8b949e;--bg:#0d1117;--accent:#3fb950;--border:#30363d;--soft:#161b22}}
+    *{box-sizing:border-box} body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--fg);background:var(--bg)}
+    .wrap{max-width:960px;margin:0 auto;padding:0 18px 60px}
+    header{padding:16px 0}.logo{color:var(--accent);text-decoration:none;font-weight:700}
+    h1{font-size:28px;margin:14px 0 4px;letter-spacing:-.01em}.sub{color:var(--muted);margin:0 0 18px}
+    .layout{display:grid;grid-template-columns:1fr 1fr;gap:22px}@media(max-width:760px){.layout{grid-template-columns:1fr}}
+    fieldset{border:1px solid var(--border);border-radius:10px;margin:0 0 14px;padding:12px 14px}
+    legend{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 6px}
+    .field{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:7px 0}
+    .field label{font-size:13px}.field input{width:130px;font:inherit;font-size:13px;text-align:right;padding:5px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--fg)}
+    .hero-card{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:10px}
+    .hero-card .k{font-size:13px;color:var(--muted)}.hero-card .v{font-size:34px;font-weight:800;color:var(--accent);margin-top:2px}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .card{background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+    .card .k{font-size:12px;color:var(--muted)}.card .v{font-size:18px;font-weight:700;margin-top:2px}
+    table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}th,td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--border)}th:first-child,td:first-child{text-align:left}
+    .prose{margin-top:30px}.prose h2{font-size:19px}a{color:var(--accent)}
+    footer{border-top:1px solid var(--border);margin-top:36px;padding:20px 0 0;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="logo" href="./">Rental Property Calculator</a></header>
+    <h1>Home Affordability Calculator</h1>
+    <p class="sub">How much house can you afford? This uses the lender's standard <strong>28/36 rule</strong>. Everything runs in your browser — nothing is saved or uploaded.</p>
+
+    <div class="layout">
+      <form id="form">
+        <fieldset><legend>Income &amp; debts</legend>
+          <div class="field"><label>Gross annual income ($)</label><input id="income" type="number" value="120000" /></div>
+          <div class="field"><label>Monthly debt payments ($)</label><input id="monthlyDebts" type="number" value="500" /></div>
+        </fieldset>
+        <fieldset><legend>Cash &amp; loan</legend>
+          <div class="field"><label>Down payment ($)</label><input id="down" type="number" value="40000" /></div>
+          <div class="field"><label>Interest rate (%/yr)</label><input id="rate" type="number" step="0.01" value="6.5" /></div>
+          <div class="field"><label>Loan term (years)</label><input id="years" type="number" value="30" /></div>
+        </fieldset>
+        <fieldset><legend>Ownership costs</legend>
+          <div class="field"><label>Property tax (%/yr)</label><input id="taxRate" type="number" step="0.01" value="1.1" /></div>
+          <div class="field"><label>Insurance ($/yr)</label><input id="insuranceAnnual" type="number" value="1500" /></div>
+          <div class="field"><label>HOA ($/mo)</label><input id="hoaMonthly" type="number" value="0" /></div>
+        </fieldset>
+        <fieldset><legend>DTI ratios (advanced)</legend>
+          <div class="field"><label>Front-end max (% housing)</label><input id="frontDti" type="number" value="28" /></div>
+          <div class="field"><label>Back-end max (% all debt)</label><input id="backDti" type="number" value="36" /></div>
+        </fieldset>
+      </form>
+
+      <div>
+        <div class="hero-card"><div class="k">Home price you can afford</div><div class="v" id="o-price">—</div></div>
+        <div class="cards">
+          <div class="card"><div class="k">Max loan</div><div class="v" id="o-loan">—</div></div>
+          <div class="card"><div class="k">Est. monthly payment</div><div class="v" id="o-payment">—</div></div>
+        </div>
+        <table>
+          <tr><th>Monthly budget limited by</th><td id="o-limited">—</td></tr>
+          <tr><th>Principal &amp; interest</th><td id="o-pi">—</td></tr>
+          <tr><th>Property tax</th><td id="o-tax">—</td></tr>
+          <tr><th>Insurance</th><td id="o-ins">—</td></tr>
+          <tr><th>HOA</th><td id="o-hoa">—</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <section class="prose">
+      <h2>What is the 28/36 rule?</h2>
+      <p>Lenders generally cap your <strong>front-end ratio</strong> — housing costs (mortgage principal &amp; interest, property tax, insurance, and HOA) — at about <strong>28%</strong> of your gross monthly income, and your <strong>back-end ratio</strong> — all debt payments including the mortgage — at about <strong>36%</strong>. Whichever limit is lower sets your budget. This calculator solves for the highest home price that keeps you inside both.</p>
+      <h2>Next steps</h2>
+      <p>Planning to rent it out instead of living in it? Run the deal through the <a href="./">rental property calculator</a>. Want to see the loan paid down over time? Try the <a href="mortgage.html">mortgage calculator</a>.</p>
+      <p class="sub">Estimates only — your real budget depends on credit, loan program, and lender. Verify with a lender before house hunting.</p>
+    </section>
+
+    <footer>Runs entirely in your browser. <a href="privacy.html">Privacy policy</a>. &nbsp;·&nbsp; <a href="./">Rental calculator</a> &nbsp;·&nbsp; <a href="mortgage.html">Mortgage calculator</a> &nbsp;·&nbsp; <a href="one-percent-rule.html">The 1% rule</a></footer>
+  </div>
+  <script type="module" src="affordability.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Home Affordability Calculator","url":"https://myastroapp.github.io/rental-calculator/affordability.html","applicationCategory":"FinanceApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free home affordability calculator using the 28/36 rule — find the max home price, loan, and monthly payment you can afford."}</script>
+</body>
+</html>
