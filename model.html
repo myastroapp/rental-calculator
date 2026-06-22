@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rental Property Analysis Model — Excel &amp; Google Sheets Spreadsheet</title>
+  <meta name="description" content="A clean rental-property underwriting spreadsheet for Excel, Google Sheets & Numbers. Enter a deal once and get NOI, cap rate, cash-on-cash, DSCR, a 10-year projection, and return-on-sale instantly. One-time purchase, no subscription, no login." />
+  <link rel="canonical" href="https://myastroapp.github.io/rental-calculator/model.html" />
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="Rental Property Analysis Model — Excel & Google Sheets" />
+  <meta property="og:description" content="Underwrite a rental deal in 60 seconds: NOI, cap rate, cash-on-cash, DSCR, 10-year projection, return on sale. One-time purchase." />
+  <meta property="og:url" content="https://myastroapp.github.io/rental-calculator/model.html" />
+  <meta property="og:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://myastroapp.github.io/rental-calculator/og-default.png" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    :root { --fg:#1f2328; --muted:#656d76; --bg:#fff; --accent:#0d7d4d; --border:#d0d7de; --soft:#f6f8fa; --in:#dce9f7; }
+    @media (prefers-color-scheme: dark){ :root{ --fg:#e6edf3; --muted:#8b949e; --bg:#0d1117; --accent:#3fb950; --border:#30363d; --soft:#161b22; --in:#16324a; } }
+    *{box-sizing:border-box} body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--fg);background:var(--bg)}
+    .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+    header{padding:18px 0}.logo{color:var(--accent);text-decoration:none;font-weight:700}
+    .hero{padding:30px 0 8px}
+    h1{font-size:34px;line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+    .sub{font-size:19px;color:var(--muted);margin:0 0 20px}
+    .pricerow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:22px 0}
+    .price{font-size:30px;font-weight:800}.price s{color:var(--muted);font-weight:400;font-size:20px;margin-right:8px}
+    .cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-weight:700;font-size:17px}
+    .cta:hover{filter:brightness(1.05)}
+    .trust{color:var(--muted);font-size:14px;margin:6px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:34px 0}
+    .card{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+    .card h3{margin:0 0 6px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:14px}
+    h2{font-size:22px;margin:36px 0 10px;letter-spacing:-.01em}
+    ul.checks{list-style:none;padding:0;margin:0}ul.checks li{padding:6px 0 6px 28px;position:relative}
+    ul.checks li:before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800}
+    .preview{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:18px 0}
+    .preview .pv-h{background:var(--accent);color:#fff;font-weight:700;padding:8px 14px;font-size:14px}
+    table{border-collapse:collapse;width:100%;font-size:14px}
+    td{padding:7px 14px;border-top:1px solid var(--border)}
+    td.k{color:var(--muted)} td.v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+    td.in{background:var(--in)}
+    .faq dt{font-weight:700;margin:16px 0 4px}.faq dd{margin:0;color:var(--muted)}
+    footer{border-top:1px solid var(--border);margin-top:44px;padding:22px 0 48px;color:var(--muted);font-size:14px}
+    a{color:var(--accent)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><a class="logo" href="./">Rental Property Calculator</a></header>
+
+    <div class="hero">
+      <h1>Underwrite a rental deal in 60 seconds.</h1>
+      <p class="sub">A clean, professional spreadsheet model for single-family and small multifamily rentals. Type a deal into the blue cells and read the verdict — NOI, cap rate, cash-on-cash, DSCR, a 10-year projection, and your return when you sell. <strong>Includes a bonus income &amp; expense tracker for tax time.</strong></p>
+
+      <div class="pricerow">
+        <div class="price"><s>$49</s>$19</div>
+        <a class="cta" href="https://buy.stripe.com/00weVfgrv4NI6rr6QJbwk0d">Get the model →</a>
+      </div>
+      <p class="trust">Two spreadsheets · One-time purchase · Instant download · Excel, Google Sheets &amp; Numbers · No subscription · Free updates</p>
+    </div>
+
+    <h2>What you get</h2>
+    <div class="grid">
+      <div class="card"><h3>Every metric that matters</h3><p>NOI, cap rate, cash-on-cash return, DSCR, gross rent multiplier, and the 1% rule — calculated the moment you enter a deal.</p></div>
+      <div class="card"><h3>Input once, see everything</h3><p>One set of blue input cells drives the whole model. Change the price or rent and every result and projection updates instantly.</p></div>
+      <div class="card"><h3>10-year projection</h3><p>Year-by-year rent, expenses, NOI, cash flow, property value, loan balance, and equity — with your own growth assumptions.</p></div>
+      <div class="card"><h3>Return on sale</h3><p>Projected sale price, loan payoff, net proceeds, total profit, equity multiple, and annualized return over your hold period.</p></div>
+      <div class="card"><h3>Yours forever</h3><p>A real spreadsheet you own and can customize — not a web app that disappears or a subscription that renews.</p></div>
+      <div class="card"><h3>Private by default</h3><p>Runs entirely on your computer. No account, no upload, no one watching which deals you analyze.</p></div>
+      <div class="card"><h3>Bonus: income &amp; expense tracker</h3><p>A second spreadsheet to log rent and expenses month by month, with IRS Schedule-E categories and an automatic annual P&amp;L — ready to hand your accountant at tax time.</p></div>
+    </div>
+
+    <h2>A look inside</h2>
+    <div class="preview">
+      <div class="pv-h">Analysis — sample deal</div>
+      <table>
+        <tr><td class="k">Purchase price</td><td class="v in">$200,000</td></tr>
+        <tr><td class="k">Down payment (20%) + closing</td><td class="v in">$46,000 invested</td></tr>
+        <tr><td class="k">Gross monthly rent</td><td class="v in">$2,100</td></tr>
+        <tr><td class="k">Loan (30yr @ 7.0%) — monthly P&amp;I</td><td class="v">$1,064.48</td></tr>
+        <tr><td class="k">Net operating income (NOI)</td><td class="v">$16,031</td></tr>
+        <tr><td class="k">Cap rate</td><td class="v">8.02%</td></tr>
+        <tr><td class="k">Cash-on-cash return</td><td class="v">7.08%</td></tr>
+        <tr><td class="k">DSCR</td><td class="v">1.26</td></tr>
+        <tr><td class="k">Annual cash flow</td><td class="v">$3,257</td></tr>
+        <tr><td class="k">5-year equity multiple</td><td class="v">1.89×</td></tr>
+        <tr><td class="k">5-year annualized return</td><td class="v">13.6%</td></tr>
+      </table>
+    </div>
+    <p class="trust">Every number above is live in the file — change any blue input and watch it recalculate.</p>
+
+    <h2>Who it's for</h2>
+    <ul class="checks">
+      <li>First-time investors who want to stop guessing and screen deals with real numbers.</li>
+      <li>Landlords comparing two or three properties before making an offer.</li>
+      <li>Agents and wholesalers who need a clean one-page analysis to send a client.</li>
+      <li>Anyone tired of rebuilding the same formulas in a blank spreadsheet.</li>
+    </ul>
+
+    <div class="pricerow">
+      <div class="price">$19</div>
+      <a class="cta" href="https://buy.stripe.com/00weVfgrv4NI6rr6QJbwk0d">Get the model →</a>
+    </div>
+
+    <h2>Questions</h2>
+    <dl class="faq">
+      <dt>What format is it?</dt><dd>A standard <code>.xlsx</code> spreadsheet. It opens in Microsoft Excel, Google Sheets (File → Import, or open directly), Apple Numbers, and LibreOffice.</dd>
+      <dt>How do I get it?</dt><dd>Right after checkout you're taken to a page with an instant download link. No waiting, no account to create.</dd>
+      <dt>Is it a subscription?</dt><dd>No. You pay once and the file is yours, including future updates.</dd>
+      <dt>Will it work for my market?</dt><dd>Yes — the metrics are universal. Just enter your local taxes, insurance, and rents. (Figures are estimates; always verify with your own due diligence.)</dd>
+      <dt>Not satisfied?</dt><dd>Reply to your purchase receipt within 7 days for a full refund, no questions asked.</dd>
+      <dt>Is this financial advice?</dt><dd>No. It's an analysis tool to help you think clearly about a deal — not investment, tax, or legal advice.</dd>
+    </dl>
+
+    <footer>
+      Prefer to start free? Use the <a href="./">in-browser rental calculator</a> — then grab the full model when you're ready.<br>
+      <a href="privacy.html">Privacy</a>
+    </footer>
+  </div>
+</body>
+</html>
